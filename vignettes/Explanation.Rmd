@@ -1,0 +1,89 @@
+---
+title: "Package Function Explanations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{What the package does}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753Falast2025)
+```
+
+# Introduction
+## mymlnorm()
+
+mymlnorm() computes and visualizes the likelihood surface for a normal distribution by evaluating the log-likelihood function over a grid of possible values for the population mean (mu) and standard deviation (sig)
+
+```{r}
+set.seed(123)
+x <- rnorm(100, mean = 10, sd = 2)
+mymlnorm(x, mu = seq(8, 12, length = 100), sig = seq(1, 4, length = 100))
+```
+
+## myboot2()
+
+myboot2() performs nonparametric bootstrapping to estimate the sampling distribution of the mean
+```{r}
+set.seed(123)
+x <- rnorm(50, mean = 12, sd = 3)
+myboot2(x, iter = 1000)
+```
+
+## myclt()
+
+myclt() visually demonstrates the Central Limit Theorem (CLT) by simulating sample means from a normally or uniformly distributed population
+
+```{r}
+myclt(n = 30, iter = 10)
+```
+
+## myncurve()
+
+myncurve() plots the probability density function (PDF) of a normal distribution and shades the area under the curve to the right of a specified value a
+
+```{r}
+myncurve(a = 120, mu=10, sigma=10)
+```
+
+## mysq()
+
+mysq() calculates and visualizes the sum of squares for a given numeric vector
+```{r}
+x <- c(5, 7, 8, 6, 9)
+mysq(x)
+```
+
+## ntickets()
+
+tickets() calculates the number of airline tickets that should be sold when a plane has a fixed number of seats, and there’s a known probability that a passenger shows up
+
+```{r}
+ntickets(N = 100, gamma = 0.05, p = 0.92)
+```
+
+## myf()
+
+myf() evaluates a piecewise quadratic function where the quadratic term is applied only when x > 18. It’s used for modeling scenarios where the relationship changes past a threshold
+
+```{r}
+myf(20, c(2, 3, 4))     
+myf(c(15, 18, 20), c(2, 3, 4))  
+```
+
+## mybin()
+
+mybin() simulates a binomial experiment by repeatedly sampling outcomes of success/failure trials and plotting the resulting distribution of successes.
+
+```{r}
+mybin(1000, 10, 0.7)
+```
+
